@@ -185,58 +185,27 @@ body {
     color: #4a148c;
 }
 
-/* =========================================
-   ¡MAGIA DEL TOOLTIP CORREGIDA!
-   ========================================= */
-
-/* 1. Burbuja de texto */
+/* TOOLTIP CORREGIDO */
 .icon-box::after {
     content: attr(data-tooltip);
     position: absolute;
-    bottom: calc(100% + 15px); /* Siempre 15px por encima del círculo */
+    bottom: calc(100% + 15px);
     left: 50%;
     transform: translateX(-50%);
-    
-    /* Reglas para que el texto NO se aplaste */
     display: block;
-    width: max-content; /* Se adapta al texto */
-    max-width: 250px; /* Pero nunca es más ancho que 250px */
+    width: max-content;
+    max-width: 250px;
     padding: 12px 18px;
-    white-space: normal; /* Permite saltos de línea */
+    white-space: normal;
     word-wrap: break-word;
-    
-    /* Estilo visual */
     background-color: #4a148c;
-    color: #ffffff; /* Letra blanca garantizada */
+    color: #ffffff;
     font-size: 0.85rem;
     font-weight: 500;
     text-align: center;
     line-height: 1.4;
     border-radius: 10px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    
-    /* Animación */
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none; /* Evita parpadeos con el mouse */
-    transition: all 0.3s ease;
-    z-index: 999;
-}
-
-/* 2. Piquito del triángulo */
-.icon-box::before {
-    content: '';
-    position: absolute;
-    bottom: calc(100% + 5px);
-    left: 50%;
-    transform: translateX(-50%);
-    
-    /* Dibuja un triángulo apuntando hacia abajo */
-    border-width: 10px 10px 0 10px;
-    border-style: solid;
-    border-color: #4a148c transparent transparent transparent;
-    
-    /* Animación */
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
@@ -244,12 +213,28 @@ body {
     z-index: 999;
 }
 
-/* 3. Mostrar al pasar el cursor */
+.icon-box::before {
+    content: '';
+    position: absolute;
+    bottom: calc(100% + 5px);
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 10px 10px 0 10px;
+    border-style: solid;
+    border-color: #4a148c transparent transparent transparent;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 999;
+}
+
 .icon-box:hover::after,
 .icon-box:hover::before {
     opacity: 1;
     visibility: visible;
 }
+
 /* =========================================
    4. MISIÓN Y VISIÓN
    ========================================= */
@@ -258,11 +243,11 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 40px;
     margin-top: 20px;
-    text-align: center; /* Centramos el texto y los iconos */
+    text-align: center;
 }
 
 .mv-card {
-    background: #fcfcfc; /* Fondo súper limpio */
+    background: #fcfcfc;
     padding: 40px;
     border-radius: 30px;
     border: 1px solid #f0e6ff;
@@ -278,15 +263,13 @@ body {
     margin-bottom: 10px;
 }
 
-/* --- COLOR MORADO PARA LOS SÍMBOLOS --- */
 .mv-icon i {
     font-size: 2.5rem;
-    color: #4a148c !important; /* Forzamos el morado fuerte de SIMAIN */
+    color: #4a148c !important;
 }
 
-/* --- COLOR MORADO PARA LAS LETRAS (Misión / Visión) --- */
 .mv-card h3 {
-    color: #4a148c !important; /* Forzamos el morado */
+    color: #4a148c !important;
     font-size: 1.8rem;
     margin-bottom: 15px;
     text-transform: uppercase;
@@ -304,151 +287,9 @@ body {
 .mv-card p strong {
     color: #4a148c;
 }
-/* =========================================
-   6. SECCIÓN: PROYECTOS (SLIDER)
-   ========================================= */
-.projects-section {
-    padding: 0 5%;
-    margin-bottom: 80px;
-}
-
-.projects-island {
-    background: white;
-    border-radius: 40px;
-    padding: 60px 40px;
-    box-shadow: 0 15px 50px rgba(0,0,0,0.03);
-    border: 1px solid #f0e6ff;
-    max-width: 1000px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.projects-island h2 {
-    color: #4a148c;
-    font-size: 2.2rem;
-    margin-bottom: 40px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* Contenedor principal del carrusel */
-.slider-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-}
-
-/* La pista por donde corren las imágenes */
-.slider-track {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory; /* Hace que se detenga justo en la imagen */
-    scroll-behavior: smooth;
-    gap: 30px;
-    width: 90%; /* Deja espacio para los botones a los lados */
-    padding: 10px 0 20px 0;
-    
-    /* Ocultar la barra de scroll de abajo para que se vea limpio */
-    -ms-overflow-style: none;  /* IE y Edge */
-    scrollbar-width: none;  /* Firefox */
-}
-
-.slider-track::-webkit-scrollbar {
-    display: none; /* Chrome, Safari y Opera */
-}
-
-/* Cada tarjeta del proyecto */
-.slide {
-    flex: 0 0 100%; /* Cada imagen ocupa el 100% del contenedor visible */
-    scroll-snap-align: center;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    border: 3px solid #f0e6ff;
-    background-color: #fcfcfc; /* Color de fondo por si la imagen no llena todo */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.slide img {
-    width: 100%;
-    height: 100%;
-    max-height: 500px; 
-    object-fit: contain; /* contain asegura que NO se recorte ninguna letra de tu cartel */
-    background-color: white;
-}
-
-/* Marcador de posición para las fotos que te faltan */
-.placeholder-box {
-    width: 100%;
-    height: 450px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #f9f6ff;
-    color: #dcbff6;
-    gap: 15px;
-}
-
-.placeholder-box i {
-    font-size: 4rem;
-    color: #dcbff6;
-}
-
-.placeholder-box span {
-    font-size: 1.5rem;
-    color: #4a148c;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.placeholder-box small {
-    font-size: 0.9rem;
-    color: #888;
-    font-weight: normal;
-}
-
-/* Botones del Slider (Flechas) */
-.slider-btn {
-    background: #4a148c;
-    color: white;
-    border: none;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    font-size: 1.2rem;
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10;
-    box-shadow: 0 5px 15px rgba(74, 20, 140, 0.3);
-    transition: all 0.3s ease;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.slider-btn:hover {
-    background: #dcbff6;
-    color: #4a148c;
-    transform: translateY(-50%) scale(1.1); /* Efecto de agrandamiento suave */
-}
-
-.prev-btn {
-    left: -10px; /* Posicionado un poco por fuera a la izquierda */
-}
-
-.next-btn {
-    right: -10px; /* Posicionado un poco por fuera a la derecha */
-}
 
 /* =========================================
-   4. FOOTER: CLIENTES
+   5. FOOTER: CLIENTES
    ========================================= */
 .footer-container {
     padding: 60px 3% 40px 3%;
@@ -507,4 +348,324 @@ body {
     margin-top: 40px;
     color: #aaa;
     font-size: 0.8rem;
+}
+
+/* =========================================
+   6. SECCIÓN: PROYECTOS (SLIDER)
+   ========================================= */
+.projects-section {
+    padding: 0 5%;
+    margin-bottom: 80px;
+}
+
+.projects-island {
+    background: white;
+    border-radius: 40px;
+    padding: 60px 40px;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.03);
+    border: 1px solid #f0e6ff;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.projects-island h2 {
+    color: #4a148c;
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.slider-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.slider-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    gap: 30px;
+    width: 90%;
+    padding: 10px 0 20px 0;
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+}
+
+.slider-track::-webkit-scrollbar {
+    display: none;
+}
+
+.slide {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    border: 3px solid #f0e6ff;
+    background-color: #fcfcfc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    max-height: 500px; 
+    object-fit: contain;
+    background-color: white;
+}
+
+.placeholder-box {
+    width: 100%;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9f6ff;
+    color: #dcbff6;
+    gap: 15px;
+}
+
+.placeholder-box i {
+    font-size: 4rem;
+    color: #dcbff6;
+}
+
+.placeholder-box span {
+    font-size: 1.5rem;
+    color: #4a148c;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.placeholder-box small {
+    font-size: 0.9rem;
+    color: #888;
+    font-weight: normal;
+}
+
+.slider-btn {
+    background: #4a148c;
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    box-shadow: 0 5px 15px rgba(74, 20, 140, 0.3);
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slider-btn:hover {
+    background: #dcbff6;
+    color: #4a148c;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.prev-btn {
+    left: -10px;
+}
+
+.next-btn {
+    right: -10px;
+}
+
+/* =========================================
+   7. MENÚS DESPLEGABLES (DROPDOWNS)
+   ========================================= */
+.nav-links li {
+    position: relative; 
+}
+
+.nav-links a {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 150%; 
+    left: 0;
+    background: #f4e8ff;
+    min-width: 260px;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(74, 20, 140, 0.25);
+    list-style: none;
+    padding: 10px 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 2000;
+    border: 2px solid #dcbff6;
+}
+
+.dropdown:hover > .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    top: 120%; 
+}
+
+.dropdown-menu li {
+    width: 100%;
+}
+
+.dropdown-menu a {
+    padding: 12px 20px;
+    color: #4a148c;
+    font-weight: 700;
+    text-transform: none; 
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    justify-content: space-between; 
+}
+
+.dropdown-menu a:hover {
+    background: #4a148c;
+    color: #ffffff;
+    padding-left: 25px; 
+}
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.submenu {
+    position: absolute;
+    top: 10px; 
+    left: 100%; 
+    background: #f4e8ff;
+    min-width: 220px;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(74, 20, 140, 0.25);
+    list-style: none;
+    padding: 10px 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    border: 2px solid #dcbff6;
+    z-index: 2001;
+}
+
+.dropdown-submenu:hover > .submenu {
+    opacity: 1;
+    visibility: visible;
+    top: -5px; 
+}
+
+/* =========================================
+   8. RESPONSIVE DESIGN (CELULARES Y TABLETS)
+   ========================================= */
+
+.menu-toggle {
+    display: none;
+    font-size: 1.8rem;
+    color: #4a148c;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 850px) {
+    
+    .navbar {
+        left: 25%;
+        right: 3%;
+        padding: 0 20px;
+        justify-content: flex-end;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .external-logo {
+        top: 15px;
+        left: 3%;
+    }
+    
+    .external-logo img {
+        height: 70px;
+    }
+
+    .content-wrapper {
+        padding-top: 140px;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        right: 0;
+        width: 250px;
+        background: #fcfcfc;
+        border-radius: 20px;
+        box-shadow: 0 15px 40px rgba(74, 20, 140, 0.2);
+        padding: 20px 0;
+        border: 2px solid #dcbff6;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: left;
+    }
+
+    .nav-links a {
+        padding: 15px 25px;
+        color: #4a148c;
+        font-size: 0.9rem;
+    }
+
+    .social-media {
+        display: none;
+        justify-content: center;
+        gap: 15px;
+        padding: 15px;
+        background: #f4e8ff;
+        border-radius: 0 0 18px 18px;
+    }
+
+    .social-media.active {
+        display: flex;
+    }
+
+    .social-media a {
+        color: #4a148c;
+    }
+
+    .dropdown-menu, .submenu {
+        position: static;
+        box-shadow: none;
+        border: none;
+        background: #f4e8ff;
+        padding-left: 15px;
+        display: none;
+        opacity: 1;
+        visibility: visible;
+        width: 100%;
+    }
+
+    .dropdown:hover > .dropdown-menu,
+    .dropdown-submenu:hover > .submenu {
+        display: block;
+    }
 }
