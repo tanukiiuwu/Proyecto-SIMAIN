@@ -15,11 +15,78 @@
         </div>
 
         <nav class="navbar">
+            <!-- BOTÓN HAMBURGUESA (Para celulares) -->
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+
             <ul class="nav-links">
                 <li><a href="#quienes-somos">¿Quiénes Somos?</a></li>
-                <li><a href="#servicios">Servicios</a></li>
+                
+                <!-- ================= MENÚ DESPLEGABLE: SERVICIOS ================= -->
+                <li class="dropdown">
+                    <a href="#servicios">Servicios <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="servicios-compresores.html">Compresores</a></li>
+                        <li><a href="servicios-chillers.html">Chillers</a></li>
+                        
+                        <!-- Submenú de HVAC -->
+                        <li class="dropdown-submenu">
+                            <a href="servicios-hvac.html">HVAC <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i></a>
+                            <ul class="submenu">
+                                <li><a href="servicios-hvac.html#sistemas-hvac">Sistemas HVAC</a></li>
+                                <li><a href="servicios-hvac.html#poliza-mtto">Póliza de Mtto</a></li>
+                                <li><a href="servicios-hvac.html#calculos-ventilacion">Cálculos de Ventilación</a></li>
+                                <li><a href="servicios-hvac.html#torres-enfriamiento">Torres de Enfriamiento</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li><a href="servicios-secadores.html">Secadores</a></li>
+                        <li><a href="servicios-generadores.html">Generadores de Vapor</a></li>
+                        <li><a href="servicios-agua.html">Tratamiento de Agua</a></li>
+                        <li><a href="servicios-paileria.html">Pailería</a></li>
+                        <li><a href="servicios-obra.html">Obra Civil Ligera</a></li>
+                        
+                        <!-- Submenú de Módulos -->
+                        <li class="dropdown-submenu">
+                            <a href="servicios-modulos.html">Módulos Electrónicos <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i></a>
+                            <ul class="submenu">
+                                <li><a href="servicios-modulos.html#reparacion">Reparación</a></li>
+                                <li><a href="servicios-modulos.html#diagnostico">Diagnóstico</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li><a href="servicios-variadores.html">Variadores de Frecuencia</a></li>
+                        <li><a href="servicios-intercambiadores.html">Limpieza de Intercambiadores</a></li>
+                        <li><a href="servicios-calibracion.html">Calibración</a></li>
+                    </ul>
+                </li>
+
                 <li><a href="#proyectos">Proyectos</a></li>
-                <li><a href="#refacciones">Refacciones</a></li>
+                
+                <!-- ================= MENÚ DESPLEGABLE: REFACCIONES ================= -->
+                <li class="dropdown">
+                    <a href="#refacciones">Refacciones <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i></a>
+                    <ul class="dropdown-menu">
+                        <!-- Submenú de Compresores -->
+                        <li class="dropdown-submenu">
+                            <a href="refacciones-compresores.html">Compresores <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i></a>
+                            <ul class="submenu">
+                                <li><a href="refacciones-compresores.html#kits">Kits</a></li>
+                                <li><a href="refacciones-compresores.html#filtros">Filtros de Aire</a></li>
+                                <li><a href="refacciones-compresores.html#aceite">Aceite</a></li>
+                                <li><a href="refacciones-compresores.html#enfriadores">Enfriadores</a></li>
+                                <li><a href="refacciones-compresores.html#ver-mas">Ver Más</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li><a href="refacciones-secadores.html">Secadores</a></li>
+                        <li><a href="refacciones-tarjetas.html">Tarjetas Electrónicas</a></li>
+                        <li><a href="refacciones-vapor.html">Sistemas de Vapor</a></li>
+                        <li><a href="refacciones-hvac.html">HVAC</a></li>
+                    </ul>
+                </li>
+                
                 <li><a href="#clientes">Nuestros Clientes</a></li>
             </ul>
 
@@ -107,24 +174,20 @@
             </div>
         </section>
 
-        <!-- ================= NUEVA SECCIÓN: PROYECTOS ================= -->
+        <!-- ================= SECCIÓN PROYECTOS ================= -->
         <section id="proyectos" class="projects-section">
             <div class="projects-island">
                 <h2>Algunos de Nuestros Proyectos</h2>
                 
                 <div class="slider-wrapper">
-                    <!-- Flecha Izquierda -->
                     <button class="slider-btn prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
 
-                    <!-- Contenedor de las imágenes -->
                     <div class="slider-track">
                         
-                        <!-- Proyecto 1 (Tu imagen actual) -->
                         <div class="slide">
                             <img src="proyecto1.png" alt="Proyecto Tanques Acero Inoxidable Philip Morris">
                         </div>
 
-                        <!-- Proyecto 2 (Marcador de posición) -->
                         <div class="slide">
                             <div class="placeholder-box">
                                 <i class="fa-solid fa-image"></i>
@@ -132,7 +195,6 @@
                             </div>
                         </div>
 
-                        <!-- Proyecto 3 (Marcador de posición) -->
                         <div class="slide">
                             <div class="placeholder-box">
                                 <i class="fa-solid fa-image"></i>
@@ -140,7 +202,6 @@
                             </div>
                         </div>
 
-                        <!-- Proyecto 4 (Marcador de posición) -->
                         <div class="slide">
                             <div class="placeholder-box">
                                 <i class="fa-solid fa-image"></i>
@@ -150,7 +211,6 @@
 
                     </div>
 
-                    <!-- Flecha Derecha -->
                     <button class="slider-btn next-btn"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
             </div>
@@ -213,6 +273,18 @@
 
             nextBtn.addEventListener('click', () => {
                 track.scrollBy({ left: track.offsetWidth, behavior: 'smooth' });
+            });
+        }
+        
+        // 3. Funcionalidad del Menú Hamburguesa (Móviles)
+        const mobileMenuBtn = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        const socialMedia = document.querySelector('.social-media');
+
+        if(mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                socialMedia.classList.toggle('active');
             });
         }
     </script>
