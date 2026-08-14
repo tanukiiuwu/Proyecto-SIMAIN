@@ -240,14 +240,15 @@ body {
    ========================================= */
 .mission-vision-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    /* CAMBIO: Mínimo 250px para celulares pequeños */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
     gap: 40px;
     margin-top: 20px;
-    text-align: center;
+    text-align: center; 
 }
 
 .mv-card {
-    background: #fcfcfc;
+    background: #fcfcfc; 
     padding: 40px;
     border-radius: 30px;
     border: 1px solid #f0e6ff;
@@ -265,11 +266,11 @@ body {
 
 .mv-icon i {
     font-size: 2.5rem;
-    color: #4a148c !important;
+    color: #4a148c !important; 
 }
 
 .mv-card h3 {
-    color: #4a148c !important;
+    color: #4a148c !important; 
     font-size: 1.8rem;
     margin-bottom: 15px;
     text-transform: uppercase;
@@ -388,27 +389,27 @@ body {
 .slider-track {
     display: flex;
     overflow-x: auto;
-    scroll-snap-type: x mandatory;
+    scroll-snap-type: x mandatory; 
     scroll-behavior: smooth;
     gap: 30px;
-    width: 90%;
+    width: 90%; 
     padding: 10px 0 20px 0;
-    -ms-overflow-style: none; 
-    scrollbar-width: none; 
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
 }
 
 .slider-track::-webkit-scrollbar {
-    display: none;
+    display: none; 
 }
 
 .slide {
-    flex: 0 0 100%;
+    flex: 0 0 100%; 
     scroll-snap-align: center;
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     border: 3px solid #f0e6ff;
-    background-color: #fcfcfc;
+    background-color: #fcfcfc; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -418,7 +419,7 @@ body {
     width: 100%;
     height: 100%;
     max-height: 500px; 
-    object-fit: contain;
+    object-fit: contain; 
     background-color: white;
 }
 
@@ -475,15 +476,15 @@ body {
 .slider-btn:hover {
     background: #dcbff6;
     color: #4a148c;
-    transform: translateY(-50%) scale(1.1);
+    transform: translateY(-50%) scale(1.1); 
 }
 
 .prev-btn {
-    left: -10px;
+    left: -10px; 
 }
 
 .next-btn {
-    right: -10px;
+    right: -10px; 
 }
 
 /* =========================================
@@ -503,17 +504,17 @@ body {
     position: absolute;
     top: 150%; 
     left: 0;
-    background: #f4e8ff;
+    background: #f4e8ff; 
     min-width: 260px;
     border-radius: 15px;
-    box-shadow: 0 15px 40px rgba(74, 20, 140, 0.25);
+    box-shadow: 0 15px 40px rgba(74, 20, 140, 0.25); 
     list-style: none;
     padding: 10px 0;
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
     z-index: 2000;
-    border: 2px solid #dcbff6;
+    border: 2px solid #dcbff6; 
 }
 
 .dropdown:hover > .dropdown-menu {
@@ -528,7 +529,7 @@ body {
 
 .dropdown-menu a {
     padding: 12px 20px;
-    color: #4a148c;
+    color: #4a148c; 
     font-weight: 700;
     text-transform: none; 
     font-size: 0.95rem;
@@ -537,8 +538,8 @@ body {
 }
 
 .dropdown-menu a:hover {
-    background: #4a148c;
-    color: #ffffff;
+    background: #4a148c; 
+    color: #ffffff; 
     padding-left: 25px; 
 }
 
@@ -550,10 +551,10 @@ body {
     position: absolute;
     top: 10px; 
     left: 100%; 
-    background: #f4e8ff;
+    background: #f4e8ff; 
     min-width: 220px;
     border-radius: 15px;
-    box-shadow: 0 15px 40px rgba(74, 20, 140, 0.25);
+    box-shadow: 0 15px 40px rgba(74, 20, 140, 0.25); 
     list-style: none;
     padding: 10px 0;
     opacity: 0;
@@ -664,8 +665,28 @@ body {
         width: 100%;
     }
 
+    /* En celulares apagamos el hover para evitar que se quede pegado */
     .dropdown:hover > .dropdown-menu,
     .dropdown-submenu:hover > .submenu {
+        display: none;
+    }
+
+    /* En celulares lo abrimos SOLO mediante la clase generada por Javascript */
+    .dropdown.active-mobile > .dropdown-menu,
+    .dropdown-submenu.active-mobile > .submenu {
         display: block;
+    }
+    
+    /* AJUSTES DE ESPACIOS PARA QUE NADA SE SALGA EN CELULAR */
+    .about-island, .projects-island, .footer-island {
+        padding: 40px 20px; 
+    }
+
+    .mv-card {
+        padding: 25px; 
+    }
+    
+    .offers-grid {
+        grid-template-columns: 1fr; 
     }
 }
