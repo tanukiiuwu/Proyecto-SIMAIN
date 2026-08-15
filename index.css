@@ -475,4 +475,217 @@ body {
 .slider-btn:hover {
     background: #dcbff6;
     color: #4a148c;
-    transform: translateY(-50%) scale(1.
+    transform: translateY(-50%) scale(1.1); 
+}
+
+.prev-btn {
+    left: -10px; 
+}
+
+.next-btn {
+    right: -10px; 
+}
+
+/* =========================================
+   7. MENÚS DESPLEGABLES (DROPDOWNS)
+   ========================================= */
+.nav-links li {
+    position: relative; 
+}
+
+.nav-links a {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 150%; 
+    left: 0;
+    background: #f4e8ff; 
+    min-width: 260px;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(74, 20, 140, 0.25); 
+    list-style: none;
+    padding: 10px 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 2000;
+    border: 2px solid #dcbff6; 
+}
+
+.dropdown:hover > .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    top: 120%; 
+}
+
+.dropdown-menu li {
+    width: 100%;
+}
+
+.dropdown-menu a {
+    padding: 12px 20px;
+    color: #4a148c; 
+    font-weight: 700;
+    text-transform: none; 
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    justify-content: space-between; 
+}
+
+.dropdown-menu a:hover {
+    background: #4a148c; 
+    color: #ffffff; 
+    padding-left: 25px; 
+}
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.submenu {
+    position: absolute;
+    top: 10px; 
+    left: 100%; 
+    background: #f4e8ff; 
+    min-width: 220px;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(74, 20, 140, 0.25); 
+    list-style: none;
+    padding: 10px 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    border: 2px solid #dcbff6;
+    z-index: 2001;
+}
+
+.dropdown-submenu:hover > .submenu {
+    opacity: 1;
+    visibility: visible;
+    top: -5px; 
+}
+
+/* =========================================
+   8. RESPONSIVE DESIGN (CELULARES Y TABLETS)
+   ========================================= */
+
+.menu-toggle {
+    display: none;
+    font-size: 1.8rem;
+    color: #4a148c;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 850px) {
+    
+    .navbar {
+        left: 25%;
+        right: 3%;
+        padding: 0 20px;
+        justify-content: flex-end;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .external-logo {
+        top: 15px;
+        left: 3%;
+    }
+    
+    .external-logo img {
+        height: 70px;
+    }
+
+    .content-wrapper {
+        padding-top: 140px;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        right: 0;
+        width: 250px;
+        background: #fcfcfc;
+        border-radius: 20px;
+        box-shadow: 0 15px 40px rgba(74, 20, 140, 0.2);
+        padding: 20px 0;
+        border: 2px solid #dcbff6;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: left;
+    }
+
+    .nav-links a {
+        padding: 15px 25px;
+        color: #4a148c;
+        font-size: 0.9rem;
+    }
+
+    .social-media {
+        display: none;
+        justify-content: center;
+        gap: 15px;
+        padding: 15px;
+        background: #f4e8ff;
+        border-radius: 0 0 18px 18px;
+    }
+
+    .social-media.active {
+        display: flex;
+    }
+
+    .social-media a {
+        color: #4a148c;
+    }
+
+    .dropdown-menu, .submenu {
+        position: static;
+        box-shadow: none;
+        border: none;
+        background: #f4e8ff;
+        padding-left: 15px;
+        display: none;
+        opacity: 1;
+        visibility: visible;
+        width: 100%;
+    }
+
+    /* En celulares apagamos el hover forzosamente para evitar pegarse */
+    .dropdown:hover > .dropdown-menu,
+    .dropdown-submenu:hover > .submenu {
+        display: none !important; 
+    }
+
+    /* En celulares lo abrimos SOLO mediante Javascript al tocar */
+    .dropdown.active-mobile > .dropdown-menu,
+    .dropdown-submenu.active-mobile > .submenu {
+        display: block !important; 
+    }
+    
+    /* AJUSTES DE ESPACIOS PARA QUE NADA SE SALGA EN CELULAR */
+    .about-island, .projects-island, .footer-island {
+        padding: 40px 20px; 
+    }
+
+    .mv-card {
+        padding: 25px; 
+    }
+    
+    .offers-grid {
+        grid-template-columns: 1fr; 
+    }
+}

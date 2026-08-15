@@ -280,4 +280,31 @@
         
         dropdownToggles.forEach(toggle => {
             toggle.addEventListener('click', function(e) {
-                const isMobile = getComputedStyle(document.getElementById('mobile-menu')).display !== 'none
+                const isMobile = getComputedStyle(document.getElementById('mobile-menu')).display !== 'none';
+                if (isMobile) {
+                    e.preventDefault(); 
+                    this.parentElement.classList.toggle('active-mobile');
+                }
+            });
+        });
+
+        // 5. Cerrar el menú principal al hacer clic en un enlace final
+        const allLinks = document.querySelectorAll('.nav-links a');
+        allLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                const isDropdown = this.parentElement.classList.contains('dropdown');
+                const isSubmenu = this.parentElement.classList.contains('dropdown-submenu');
+                const isMobile = getComputedStyle(document.getElementById('mobile-menu')).display !== 'none';
+
+                if (!isDropdown && !isSubmenu && isMobile) {
+                    navLinks.classList.remove('active');
+                    socialMedia.classList.remove('active');
+                    document.querySelectorAll('.active-mobile').forEach(item => {
+                        item.classList.remove('active-mobile');
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
