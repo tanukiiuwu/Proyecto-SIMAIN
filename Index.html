@@ -275,33 +275,9 @@
             });
         }
 
-        // 4. Funcionalidad de Submenús en Móvil (Abre/Cierra por toque)
+        // 4. Funcionalidad de Submenús en Móvil (Abre/Cierra por toque sin problemas)
         const dropdownToggles = document.querySelectorAll('.dropdown > a, .dropdown-submenu > a');
         
         dropdownToggles.forEach(toggle => {
             toggle.addEventListener('click', function(e) {
-                if (window.innerWidth <= 850) {
-                    e.preventDefault(); 
-                    this.parentElement.classList.toggle('active-mobile');
-                }
-            });
-        });
-
-        // 5. Cerrar el menú principal al hacer clic en un enlace final
-        const allLinks = document.querySelectorAll('.nav-links a');
-        allLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                if (!this.parentElement.classList.contains('dropdown') && !this.parentElement.classList.contains('dropdown-submenu')) {
-                    if (window.innerWidth <= 850) {
-                        navLinks.classList.remove('active');
-                        socialMedia.classList.remove('active');
-                        document.querySelectorAll('.active-mobile').forEach(item => {
-                            item.classList.remove('active-mobile');
-                        });
-                    }
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+                const isMobile = getComputedStyle(document.getElementById('mobile-menu')).display !== 'none
