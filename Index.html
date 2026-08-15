@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIMAIN | Ingeniería</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="index.css">
+    <!-- TRUCO PARA REFRESCAR EL CSS (Cambié a v=3) -->
+    <link rel="stylesheet" href="index.css?v=3">
 </head>
 <body>
 
@@ -15,6 +16,7 @@
         </div>
 
         <nav class="navbar">
+            <!-- BOTÓN HAMBURGUESA (Para celulares) -->
             <div class="menu-toggle" id="mobile-menu">
                 <i class="fa-solid fa-bars"></i>
             </div>
@@ -22,12 +24,14 @@
             <ul class="nav-links">
                 <li><a href="#quienes-somos">¿Quiénes Somos?</a></li>
                 
+                <!-- ================= MENÚ DESPLEGABLE: SERVICIOS ================= -->
                 <li class="dropdown">
                     <a href="#servicios">Servicios <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i></a>
                     <ul class="dropdown-menu">
                         <li><a href="servicios-compresores.html">Compresores</a></li>
                         <li><a href="servicios-chillers.html">Chillers</a></li>
                         
+                        <!-- Submenú de HVAC -->
                         <li class="dropdown-submenu">
                             <a href="servicios-hvac.html">HVAC <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i></a>
                             <ul class="submenu">
@@ -44,6 +48,7 @@
                         <li><a href="servicios-paileria.html">Pailería</a></li>
                         <li><a href="servicios-obra.html">Obra Civil Ligera</a></li>
                         
+                        <!-- Submenú de Módulos -->
                         <li class="dropdown-submenu">
                             <a href="servicios-modulos.html">Módulos Electrónicos <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i></a>
                             <ul class="submenu">
@@ -60,9 +65,11 @@
 
                 <li><a href="#proyectos">Proyectos</a></li>
                 
+                <!-- ================= MENÚ DESPLEGABLE: REFACCIONES ================= -->
                 <li class="dropdown">
                     <a href="#refacciones">Refacciones <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i></a>
                     <ul class="dropdown-menu">
+                        <!-- Submenú de Compresores -->
                         <li class="dropdown-submenu">
                             <a href="refacciones-compresores.html">Compresores <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i></a>
                             <ul class="submenu">
@@ -95,6 +102,7 @@
 
     <main class="content-wrapper">
         
+        <!-- ================= SECCIÓN QUIÉNES SOMOS ================= -->
         <section id="quienes-somos" class="about-section">
             <div class="about-island">
                 <span class="badge">Nuestra Esencia</span>
@@ -146,6 +154,7 @@
 
                 <hr class="separator">
 
+                <!-- ================= MISIÓN Y VISIÓN ================= -->
                 <div class="mission-vision-grid">
                     
                     <div class="mv-card">
@@ -161,9 +170,12 @@
                     </div>
 
                 </div>
-                </div>
+                <!-- ================= FIN MISIÓN Y VISIÓN ================= -->
+
+            </div>
         </section>
 
+        <!-- ================= SECCIÓN PROYECTOS ================= -->
         <section id="proyectos" class="projects-section">
             <div class="projects-island">
                 <h2>Algunos de Nuestros Proyectos</h2>
@@ -204,7 +216,9 @@
                 </div>
             </div>
         </section>
-        </main>
+        <!-- ================= FIN SECCIÓN PROYECTOS ================= -->
+
+    </main>
 
     <footer id="clientes" class="footer-container">
         <div class="footer-island">
@@ -263,7 +277,7 @@
             });
         }
         
-        // 3. Funcionalidad del Menú Hamburguesa (Móviles)
+        // 3. Funcionalidad del Menú Hamburguesa (Abre/Cierra barra lateral)
         const mobileMenuBtn = document.getElementById('mobile-menu');
         const navLinks = document.querySelector('.nav-links');
         const socialMedia = document.querySelector('.social-media');
@@ -275,15 +289,18 @@
             });
         }
 
-        // 4. Funcionalidad de Submenús en Móvil (Abre/Cierra por toque sin problemas)
+        // 4. Funcionalidad de Submenús en Móvil (100% Corregido a prueba de toques fantasma)
         const dropdownToggles = document.querySelectorAll('.dropdown > a, .dropdown-submenu > a');
         
         dropdownToggles.forEach(toggle => {
             toggle.addEventListener('click', function(e) {
-                const isMobile = getComputedStyle(document.getElementById('mobile-menu')).display !== 'none';
-                if (isMobile) {
-                    e.preventDefault(); 
-                    this.parentElement.classList.toggle('active-mobile');
+                // Verificamos si estamos en celular revisando el ancho de la ventana
+                if (window.innerWidth <= 850) {
+                    e.preventDefault(); // Evita que la página brinque hacia arriba
+                    
+                    // Seleccionamos la etiqueta padre (<li>) y le encendemos/apagamos la clase
+                    const parentLi = this.parentElement;
+                    parentLi.classList.toggle('active-mobile');
                 }
             });
         });
@@ -292,16 +309,20 @@
         const allLinks = document.querySelectorAll('.nav-links a');
         allLinks.forEach(link => {
             link.addEventListener('click', function() {
-                const isDropdown = this.parentElement.classList.contains('dropdown');
-                const isSubmenu = this.parentElement.classList.contains('dropdown-submenu');
-                const isMobile = getComputedStyle(document.getElementById('mobile-menu')).display !== 'none';
-
-                if (!isDropdown && !isSubmenu && isMobile) {
-                    navLinks.classList.remove('active');
-                    socialMedia.classList.remove('active');
-                    document.querySelectorAll('.active-mobile').forEach(item => {
-                        item.classList.remove('active-mobile');
-                    });
+                // Verificamos si estamos en celular
+                if (window.innerWidth <= 850) {
+                    const parentLi = this.parentElement;
+                    // Si el enlace NO tiene submenú (es decir, es una opción final que sí debe llevarnos a otro lado)
+                    if (!parentLi.classList.contains('dropdown') && !parentLi.classList.contains('dropdown-submenu')) {
+                        // Cerramos el menú hamburguesa principal
+                        navLinks.classList.remove('active');
+                        socialMedia.classList.remove('active');
+                        
+                        // Reseteamos (cerramos) todos los submenús por si los volvemos a abrir
+                        document.querySelectorAll('.active-mobile').forEach(item => {
+                            item.classList.remove('active-mobile');
+                        });
+                    }
                 }
             });
         });
