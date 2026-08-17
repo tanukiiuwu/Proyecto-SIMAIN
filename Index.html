@@ -104,7 +104,7 @@
                  <p>
                     Conformamos un equipo <strong>multidisciplinario</strong> enfocado en brindar soluciones integrales
                      en el suministro de <strong>refacciones</strong> y <strong>servicios</strong> para todo tipo de sistemas industriales,
-                       con la capacidad de adaptarnos y resolver cualquier requerimiento.
+                        con la capacidad de adaptarnos y resolver cualquier requerimiento.
                  </p>
                 <hr class="separator">
 
@@ -255,20 +255,26 @@
         // Abrir submenús con clics controlados en móviles
         document.querySelectorAll('.dropdown-toggle-btn, .submenu-toggle-btn').forEach(btn => {
             btn.addEventListener('click', function(e) {
-                if (window.innerWidth <= 850) {
+                // Usamos matchMedia para una sincronía perfecta con tus 850px de CSS
+                if (window.matchMedia('(max-width: 850px)').matches) {
                     e.preventDefault();
                     e.stopPropagation();
+                    
+                    // Alternamos la clase para mostrar el submenú
                     this.parentElement.classList.toggle('active-mobile');
                 }
             });
         });
 
         // Cerrar todo al hacer click fuera del menú
-        document.addEventListener('click', () => {
-            if (window.innerWidth <= 850) {
-                navLinks.classList.remove('active');
-                socialMedia.classList.remove('active');
-                document.querySelectorAll('.active-mobile').forEach(el => el.classList.remove('active-mobile'));
+        document.addEventListener('click', (e) => {
+            if (window.matchMedia('(max-width: 850px)').matches) {
+                // Validación clave: Solo quitamos las clases si el clic ocurrió AFUERA de navLinks y del botón hamburguesa
+                if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                    navLinks.classList.remove('active');
+                    socialMedia.classList.remove('active');
+                    document.querySelectorAll('.active-mobile').forEach(el => el.classList.remove('active-mobile'));
+                }
             }
         });
     </script>
