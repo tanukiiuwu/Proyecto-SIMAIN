@@ -5,7 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIMAIN | Ingeniería</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="index.css?v=4">
+    <link rel="stylesheet" href="index.css?v=5">
+    
+    <style>
+        @media screen and (max-width: 850px) {
+            .nav-links .dropdown-menu.forzar-apertura,
+            .nav-links .submenu.forzar-apertura {
+                display: block !important;
+                position: static !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                margin-top: 10px !important;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -23,13 +36,13 @@
                 <li><a href="#quienes-somos">¿Quiénes Somos?</a></li>
                 
                 <li class="dropdown">
-                    <a href="javascript:void(0);" class="dropdown-toggle-btn">Servicios <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i></a>
+                    <a href="javascript:void(0);" class="dropdown-toggle-btn">Servicios <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem; pointer-events: none;"></i></a>
                     <ul class="dropdown-menu">
                         <li><a href="servicios-compresores.html">Compresores</a></li>
                         <li><a href="servicios-chillers.html">Chillers</a></li>
                         
                         <li class="dropdown-submenu">
-                            <a href="javascript:void(0);" class="submenu-toggle-btn">HVAC <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i></a>
+                            <a href="javascript:void(0);" class="submenu-toggle-btn">HVAC <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; pointer-events: none;"></i></a>
                             <ul class="submenu">
                                 <li><a href="servicios-hvac.html#sistemas-hvac">Sistemas HVAC</a></li>
                                 <li><a href="servicios-hvac.html#poliza-mtto">Póliza de Mtto</a></li>
@@ -45,7 +58,7 @@
                         <li><a href="servicios-obra.html">Obra Civil Ligera</a></li>
                         
                         <li class="dropdown-submenu">
-                            <a href="javascript:void(0);" class="submenu-toggle-btn">Módulos Electrónicos <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i></a>
+                            <a href="javascript:void(0);" class="submenu-toggle-btn">Módulos Electrónicos <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; pointer-events: none;"></i></a>
                             <ul class="submenu">
                                 <li><a href="servicios-modulos.html#reparacion">Reparación</a></li>
                                 <li><a href="servicios-modulos.html#diagnostico">Diagnóstico</a></li>
@@ -61,10 +74,10 @@
                 <li><a href="#proyectos">Proyectos</a></li>
                 
                 <li class="dropdown">
-                    <a href="javascript:void(0);" class="dropdown-toggle-btn">Refacciones <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i></a>
+                    <a href="javascript:void(0);" class="dropdown-toggle-btn">Refacciones <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem; pointer-events: none;"></i></a>
                     <ul class="dropdown-menu">
                         <li class="dropdown-submenu">
-                            <a href="javascript:void(0);" class="submenu-toggle-btn">Compresores <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i></a>
+                            <a href="javascript:void(0);" class="submenu-toggle-btn">Compresores <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; pointer-events: none;"></i></a>
                             <ul class="submenu">
                                 <li><a href="refacciones-compresores.html#kits">Kits</a></li>
                                 <li><a href="refacciones-compresores.html#filtros">Filtros de Aire</a></li>
@@ -217,6 +230,7 @@
     </footer>
 
     <script>
+        // Efecto scroll y Slider
         window.addEventListener('scroll', function() {
             const navbar = document.querySelector('.navbar');
             const logo = document.querySelector('.external-logo');
@@ -239,12 +253,12 @@
             nextBtn.addEventListener('click', () => { track.scrollBy({ left: track.offsetWidth, behavior: 'smooth' }); });
         }
         
-        // 1. Variables principales
+        // --- LA SOLUCIÓN NUCLEAR PARA MÓVILES ---
         const btnHamburguesa = document.getElementById('mobile-menu');
         const menuNav = document.querySelector('.nav-links');
         const redesSociales = document.querySelector('.social-media');
 
-        // 2. Abrir/Cerrar menú principal
+        // Abrir/Cerrar menú principal
         if(btnHamburguesa) {
             btnHamburguesa.addEventListener('click', function(e) {
                 e.stopPropagation();
@@ -253,30 +267,34 @@
             });
         }
 
-        // 3. Control de los Submenús
-        const botonesDesplegables = document.querySelectorAll('.dropdown-toggle-btn, .submenu-toggle-btn');
-
-        botonesDesplegables.forEach(function(boton) {
+        // Tocar un botón de Servicios o Refacciones
+        const botonesSubmenu = document.querySelectorAll('.dropdown-toggle-btn, .submenu-toggle-btn');
+        
+        botonesSubmenu.forEach(boton => {
             boton.addEventListener('click', function(e) {
-                // Verificamos si estamos en versión móvil (si el botón hamburguesa es visible)
-                if (window.getComputedStyle(btnHamburguesa).display !== 'none') {
+                if (window.innerWidth <= 850) {
                     e.preventDefault();
                     e.stopPropagation();
                     
-                    // Abrimos o cerramos el submenú correspondiente
-                    this.parentElement.classList.toggle('active-mobile');
+                    // Encontramos la caja del menú (ul) que está justo debajo de lo que tocaste
+                    const miSubmenu = this.nextElementSibling;
+                    
+                    // Le agregamos la clase agresiva a esa caja
+                    miSubmenu.classList.toggle('forzar-apertura');
                 }
             });
         });
 
-        // 4. Cerrar todo al tocar fuera del menú
+        // Cerrar al tocar fuera
         document.addEventListener('click', function(e) {
-            if (window.getComputedStyle(btnHamburguesa).display !== 'none') {
+            if (window.innerWidth <= 850) {
                 if (!menuNav.contains(e.target) && !btnHamburguesa.contains(e.target)) {
                     menuNav.classList.remove('active');
                     redesSociales.classList.remove('active');
-                    document.querySelectorAll('.active-mobile').forEach(function(item) {
-                        item.classList.remove('active-mobile');
+                    
+                    // Quitamos la clase agresiva de cualquier submenú que esté abierto
+                    document.querySelectorAll('.forzar-apertura').forEach(el => {
+                        el.classList.remove('forzar-apertura');
                     });
                 }
             }
