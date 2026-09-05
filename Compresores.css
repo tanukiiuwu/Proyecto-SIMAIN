@@ -1,0 +1,178 @@
+/* =========================================
+   ESTILOS ESPECÍFICOS PARA COMPRESORES
+   ========================================= */
+
+/* El banner principal de la página */
+.service-hero {
+    background: #fcfcfc;
+    border: 2px solid #f0e6ff;
+    border-radius: 40px;
+    padding: 60px 40px;
+    margin: 0 5% 50px 5%;
+    text-align: center;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.03);
+}
+
+.service-hero h1 {
+    color: #4a148c;
+    font-size: 2.8rem;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.service-hero p {
+    color: #666;
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* El cuerpo donde va el texto principal */
+.service-body {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px 80px 20px;
+}
+
+.service-body h2 {
+    color: #4a148c;
+    font-size: 1.8rem;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    text-align: center; /* Centramos los subtítulos */
+}
+
+.service-body p {
+    color: #555;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    text-align: justify; /* Hace que el texto se vea cuadradito y formal */
+}
+
+/* LA MAGIA PARA LAS IMÁGENES CENTRADAS */
+.centered-image {
+    display: block;
+    max-width: 100%; 
+    height: auto;
+    margin: 40px auto; /* Auto a los lados es lo que la centra */
+    border-radius: 20px; 
+    box-shadow: 0 10px 30px rgba(74, 20, 140, 0.15); 
+    border: 3px solid #f0e6ff;
+}
+
+/* Ajustes para celulares en esta vista */
+@media screen and (max-width: 850px) {
+    .service-hero {
+        padding: 40px 20px;
+        margin: 0 5% 30px 5%;
+    }
+    
+    .service-hero h1 {
+        font-size: 2rem;
+    }
+    
+    .service-body h2 {
+        font-size: 1.5rem;
+    }
+}
+/* =========================================
+   SECCIÓN DE COTIZACIÓN (CTA)
+   ========================================= */
+.cta-section {
+    padding: 0 5%;
+    margin-bottom: 80px;
+}
+
+.cta-island {
+    background: #4a148c; /* Morado fuerte corporativo */
+    border-radius: 40px;
+    padding: 50px 40px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 15px 40px rgba(74, 20, 140, 0.3);
+    max-width: 900px;
+    margin: 0 auto;
+    border: 2px solid #6324b5;
+}
+
+.cta-island h2 {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+    color: white;
+}
+
+.cta-island p {
+    font-size: 1.1rem;
+    margin-bottom: 35px;
+    color: #f4e8ff;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap; /* Permite que se apilen en pantallas pequeñas */
+}
+
+.cta-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 35px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.whatsapp-btn {
+    background-color: #25D366; 
+    color: white;
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+}
+
+.email-btn {
+    background-color: #ffffff;
+    color: #4a148c;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.cta-btn:hover {
+    transform: translateY(-5px);
+}
+
+.whatsapp-btn:hover {
+    box-shadow: 0 12px 25px rgba(37, 211, 102, 0.5);
+}
+
+.email-btn:hover {
+    box-shadow: 0 12px 25px rgba(255, 255, 255, 0.4);
+}
+
+/* =========================================
+   AJUSTES RESPONSIVOS DEL CTA (CELULARES)
+   ========================================= */
+@media screen and (max-width: 850px) {
+    .cta-island {
+        padding: 40px 20px;
+    }
+    
+    .cta-island h2 {
+        font-size: 1.8rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .cta-btn {
+        justify-content: center;
+        width: 100%;
+        padding: 15px 20px;
+    }
+}
